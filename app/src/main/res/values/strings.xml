@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DeX Tools n2s</string>
+    <string name="accessibility_label">DeX Tools n2s — tekst i skrót</string>
+    <string name="accessibility_description">Po świadomym włączeniu odczytuje tekst udostępniany w aktywnym oknie. Na żądanie otwiera go do zaznaczania i kopiowania. Opcjonalnie obsługuje Ctrl + Shift + S. Nie odczytuje haseł, nie zapisuje historii, nie wysyła danych. Bez OCR i bez gwarancji dostępu do każdej aplikacji. Usługę można wyłączyć w ustawieniach Androida.</string>
+</resources>
