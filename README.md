@@ -9,7 +9,7 @@ Rozmiary są ograniczane do dostępnego obszaru ekranu; aplikacja nie otwiera pe
 
 **[Pobierz APK 0.3.0](https://github.com/jargielo/DeXToolsN2S/releases/download/v0.3.0/app-debug.apk)** ·
 [Wydanie i SHA-256](https://github.com/jargielo/DeXToolsN2S/releases/tag/v0.3.0) ·
-[Buildy Actions](https://github.com/jargielo/DeXToolsN2S/actions) ·
+[Poprawny build Actions](https://github.com/jargielo/DeXToolsN2S/actions/runs/40139045649) ·
 [Wyniki testów](VALIDATION.md)
 
 APK jest podpisanym buildem **debug**. Android 11+ (minSdk 30), compile/target SDK 36.

@@ -1,0 +1,21 @@
+DOT_ALPHA_0.6 (834, 553, 882, 601) {'x': '834', 'y': '425', 'collapsed': 'true', 'transparency': '40'}
+DOT_DRAG_REMAINS_COLLAPSED (952, 596, 1000, 644) {'collapsed': 'true', 'transparency': '40', 'x': '952', 'y': '468'}
+EXPANDS_INSIDE_BOUNDS (944, 316, 1000, 644)
+PANEL_MINUS_COLLAPSES (944, 316, 992, 364)
+OPACITY_AND_POSITION_SURVIVE_RESTART {'x': '944', 'y': '188', 'collapsed': 'true', 'transparency': '40'}
+IGNORE_RESTORES_CONSENT_DIALOG
+ALLOW_NO_CONFIRMATION_NEW_PNG 1 ['DeX_n2s_20261024_223156_619.png']
+ALLOW_NO_CONFIRMATION_NEW_PNG 2 ['DeX_n2s_20261024_223230_907.png']
+INDEPENDENT_RECIPIENT IMAGE_OK 1000x700 mime=image/png uri=content://media/external/images/media/28
+RESTORED_PROJECT_MEDIA PROJECT_MEDIA: ignore; time=+37s698ms ago; rejectTime=+1m39s409ms ago
+
+
+Dodatkowe sprawdzenie suwaka z przycisku ⚙:
+LIVE_PANEL_TRANSPARENCY_80_PERCENT {'collapsed': 'false', 'transparency': '80', 'x': '944', 'y': '188'}
+TRANSPARENCY_ZERO {'collapsed': 'false', 'transparency': '0', 'x': '944', 'y': '188'}
+DONE
+
+Sprawdzenie rzeczywistego APK pobranego z Releases:
+RELEASE_APK_MINIMIZE_DOT (20, 228, 68, 276) {'collapsed': 'true', 'x': '20', 'y': '100'}
+RELEASE_APK_EXPAND_PANEL (20, 228, 76, 556) {'collapsed': 'false', 'x': '20', 'y': '100'}
+DONE

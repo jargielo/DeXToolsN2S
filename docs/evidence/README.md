@@ -17,3 +17,8 @@ Wersja 0.3.0:
 - `transparency-setting.png`: suwak przezroczystości 0–80%.
 - `dot-transparent.png`: zminimalizowana kropka z przezroczystością 40%.
 - `panel-transparent.png`: panel po rozwinięciu kropki przy dolnej prawej krawędzi; mieści się na ekranie.
+- `popup-transparent.png`: popup po restarcie, z zachowaną przezroczystością 40%.
+- `adb-image-clipboard.png`: odbiorca obrazu po zrzucie bez dialogu dzięki nadanej zgodzie ADB.
+- `consent-restored.png`: cofnięcie zgody ADB przywróciło systemowy dialog.
+- `device-checks-0.3.0.txt`: odczyty położenia, ustawień i wyniki testów ADB.
+- `release-dot.png`: kropka z rzeczywistego APK pobranego z wydania 0.3.0.

@@ -5,14 +5,23 @@
 Data: 2026-10-24. versionCode 5, compile/target SDK 36.
 
 - `assembleDebug testDebugUnitTest lintDebug`: **BUILD SUCCESSFUL**, 8/8 testów JVM, 0 pominiętych; Lint: 0 błędów, 13 ostrzeżeń.
+- Workflow wydania **Success**, **2m 23s**, dwa artefakty (APK / suma kontrolna oraz raporty), release job opublikował APK:
+  https://github.com/jargielo/DeXToolsN2S/actions/runs/40139045649
+- Pobrany APK 0.3.0 z Releases: **2 484 897 bajtów**, poprawny podpis v2, jeden podpisujący, versionCode 5 / versionName 0.3.0.
+- SHA-256 pliku zgodne z opublikowanym plikiem kontrolnym: `e9da990a1091c3dccc310f6728bff277db7587aa487e3f7f13dbd781c83fbff5`.
+- Rzeczywisty pobrany APK wydania zainstalowano: **Success**; MainActivity: **Status: ok**. Ponownie sprawdzono − → kropka [20,228]–[68,276] → kliknięcie → panel [20,228]–[76,556] → − → kropka.
 - Lokalny APK: podpis v2 poprawny; instalacja / aktualizacja na AOSP API 36: **Success**, MainActivity **Status: ok**.
 - Suwak ustawiono myszą na 40%; odczyt SharedPreferences potwierdził wartość, WindowManager potwierdził `alpha=0.6`.
+- Z przycisku ⚙ otwarto suwak nad działającym panelem. Zmiana do 80% natychmiast ustawiła nakładce `alpha=0.2`; sprawdzono też powrót do 0% i ponownie 40%.
 - Minimalizacja głównego popupu do kropki: okno 48 × 48 px, widoczna kropka 32 dp przy density 160. Kliknięcie rozwija panel 56 × 328 dp.
 - Przeciągnięcie kropki do dolnego prawego rogu zachowało stan zwinięcia. Po puszczeniu zapisano x=952, y=468; okno [952,596]–[1000,644].
 - Rozwinięcie przy krawędzi: panel [944,316]–[1000,644], w całości w dostępnym obszarze. Przycisk − ponownie zwinął panel.
 - Po force-stop i ponownym uruchomieniu pozostały przezroczystość 40%, pozycja i stan zwinięcia; popup odtworzył `alpha=0.6`.
 - Test gestu wykrył niedokładne miejsce upuszczenia; poprawiono użycie końcowych współrzędnych ACTION_UP i ponowiono test z pozytywnym wynikiem.
-- Dowody: [docs/evidence](docs/evidence/). Instrukcja nadania / cofnięcia zgody: [ADB.md](ADB.md).
+- ADB działało jako **uid=2000(shell)** po `adb unroot`. `cmd appops set pl.n2s.dextools PROJECT_MEDIA allow` → dwa kolejne zrzuty bez okna potwierdzania: `DeX_n2s_20261024_223156_619.png` i `DeX_n2s_20261024_223230_907.png`.
+- Osobny odbiorca bez zgody na galerię: **IMAGE_OK 1000x700 mime=image/png**, URI `content://media/external/images/media/28`.
+- `PROJECT_MEDIA ignore` przywróciło systemową aktywność `MediaProjectionPermissionActivity`; anulowano ją przyciskiem Wstecz. Po teście przywrócono `ignore`.
+- Dowody: [docs/evidence](docs/evidence/), [zapis sprawdzeń urządzenia](docs/evidence/device-checks-0.3.0.txt). Instrukcja nadania / cofnięcia zgody: [ADB.md](ADB.md).
 - Fizyczny Samsung S24 Ultra / Android 17 / One UI 9 / DeX pozostają **nieprzetestowane**.
 
 ## Archiwum walidacji 0.2.0 i starszych
