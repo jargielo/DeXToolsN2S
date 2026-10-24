@@ -1,6 +1,23 @@
 # Walidacja DeX Tools n2s
 
-Data: 2026-10-24. Aktualne wydanie: **0.2.0**, versionCode **4**, pakiet `pl.n2s.dextools`.
+## Wersja 0.3.0 — przezroczystość i kropka
+
+Data: 2026-10-24. versionCode 5, compile/target SDK 36.
+
+- `assembleDebug testDebugUnitTest lintDebug`: **BUILD SUCCESSFUL**, 8/8 testów JVM, 0 pominiętych; Lint: 0 błędów, 13 ostrzeżeń.
+- Lokalny APK: podpis v2 poprawny; instalacja / aktualizacja na AOSP API 36: **Success**, MainActivity **Status: ok**.
+- Suwak ustawiono myszą na 40%; odczyt SharedPreferences potwierdził wartość, WindowManager potwierdził `alpha=0.6`.
+- Minimalizacja głównego popupu do kropki: okno 48 × 48 px, widoczna kropka 32 dp przy density 160. Kliknięcie rozwija panel 56 × 328 dp.
+- Przeciągnięcie kropki do dolnego prawego rogu zachowało stan zwinięcia. Po puszczeniu zapisano x=952, y=468; okno [952,596]–[1000,644].
+- Rozwinięcie przy krawędzi: panel [944,316]–[1000,644], w całości w dostępnym obszarze. Przycisk − ponownie zwinął panel.
+- Po force-stop i ponownym uruchomieniu pozostały przezroczystość 40%, pozycja i stan zwinięcia; popup odtworzył `alpha=0.6`.
+- Test gestu wykrył niedokładne miejsce upuszczenia; poprawiono użycie końcowych współrzędnych ACTION_UP i ponowiono test z pozytywnym wynikiem.
+- Dowody: [docs/evidence](docs/evidence/). Instrukcja nadania / cofnięcia zgody: [ADB.md](ADB.md).
+- Fizyczny Samsung S24 Ultra / Android 17 / One UI 9 / DeX pozostają **nieprzetestowane**.
+
+## Archiwum walidacji 0.2.0 i starszych
+
+Data: 2026-10-24. Badane wydanie: **0.2.0**, versionCode **4**, pakiet `pl.n2s.dextools`.
 JDK 17.0.21, Gradle 8.13, AGP 8.11.1, Kotlin 2.1.20, compile/target SDK 36, minSdk 30.
 
 ## Kompilacja i plik APK

@@ -7,6 +7,7 @@ import android.view.WindowManager
 
 object PopupWindows {
     fun fit(activity: Activity, widthDp: Int, heightDp: Int) {
+        Appearance.apply(activity)
         val metrics = activity.windowManager.maximumWindowMetrics
         val bars = metrics.windowInsets.getInsetsIgnoringVisibility(
             WindowInsets.Type.systemBars() or WindowInsets.Type.displayCutout())

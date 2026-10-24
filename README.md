@@ -2,12 +2,14 @@
 
 Polska aplikacja Android w Kotlinie, autor **n2s**, pakiet **`pl.n2s.dextools`**.
 Mały, wąski popup AMOLED: menu 280 × 344 dp, okno tekstu 320 × 440 dp.
-Pływające przyciski tworzą pionowy pasek o szerokości 56 dp. Obsługa myszy i klawiatury.
+Pływające przyciski tworzą pionowy pasek o szerokości 56 dp, zwijany przyciskiem **−** do kropki 32 dp (obszar kliknięcia 48 dp).
+Kliknięcie kropki rozwija pasek, przeciągnięcie przenosi go po ekranie.
+**Ustawienia → Przezroczystość** lub **⚙** na panelu: suwak 0–80%, zapisywany między uruchomieniami. Dotyczy popupów, panelu i kropki. Obsługa myszy i klawiatury.
 Rozmiary są ograniczane do dostępnego obszaru ekranu; aplikacja nie otwiera pełnoekranowego pulpitu narzędzi.
 
-**[Pobierz APK 0.2.0](https://github.com/jargielo/DeXToolsN2S/releases/download/v0.2.0/app-debug.apk)** ·
-[Wydanie i SHA-256](https://github.com/jargielo/DeXToolsN2S/releases/tag/v0.2.0) ·
-[Poprawny build Actions](https://github.com/jargielo/DeXToolsN2S/actions/runs/40124006180) ·
+**[Pobierz APK 0.3.0](https://github.com/jargielo/DeXToolsN2S/releases/download/v0.3.0/app-debug.apk)** ·
+[Wydanie i SHA-256](https://github.com/jargielo/DeXToolsN2S/releases/tag/v0.3.0) ·
+[Buildy Actions](https://github.com/jargielo/DeXToolsN2S/actions) ·
 [Wyniki testów](VALIDATION.md)
 
 APK jest podpisanym buildem **debug**. Android 11+ (minSdk 30), compile/target SDK 36.
@@ -23,7 +25,7 @@ Testy chmurowe wykonano na emulatorze Android 16 / API 36. **Nie przeprowadzono 
 - Panel pływający z przyciskiem pełnego zrzutu i fragmentu.
 - Ctrl+Shift+S w głównym oknie; usługa dostępności próbuje obsłużyć ten skrót również poza aplikacją.
 
-Zgoda MediaProjection jest wymagana dla każdego zrzutu. Okno zgody ma osobne, przezroczyste zadanie,
+Domyślnie system pyta o zgodę MediaProjection przy każdym zrzucie. Opcjonalną zgodę przez ADB opisuje [instrukcja](ADB.md). Okno zgody ma osobne, przezroczyste zadanie,
 aby wywołanie z panelu nad inną aplikacją nie przywoływało głównego okna DeX Tools.
 Podgląd fragmentu dopasowuje się do obszaru nakładki; współrzędne są przeliczane do rozdzielczości obrazu źródłowego.
 
@@ -46,9 +48,11 @@ Kolejność i ewentualne duplikaty wynikają ze struktury aplikacji źródłowej
 2. Otwórz aplikację. W **Ustawienia → Zgoda na nakładkę** włącz wyświetlanie nad innymi aplikacjami, następnie wybierz **Pływające przyciski**.
 3. Dla odczytu tekstu świadomie włącz usługę **DeX Tools n2s — tekst i skrót** w ustawieniach dostępności.
    APK spoza sklepu może wymagać zezwolenia na ustawienia z ograniczonym dostępem w szczegółach aplikacji.
-4. Potwierdzaj systemową zgodę na zrzut, kiedy chcesz go wykonać. Zgoda może być odmówiona.
+4. Potwierdzaj systemową zgodę na zrzut albo świadomie nadaj zgodę dla tego pakietu przez [ADB](ADB.md). Zgoda może być cofnięta.
 
-Panel: **▣** pełny ekran, **⌗** fragment, **T** tekst, **×** wyłączenie. Uchwyt **⋮** pozwala przenieść panel.
+Panel: **▣** pełny ekran, **⌗** fragment, **T** tekst, **−** kropka, **⚙** przezroczystość, **×** wyłączenie.
+Przycisk **−** w nagłówku głównego popupu również minimalizuje go do pływającej kropki.
+Panel i kropka pamiętają pozycję oraz stan zwinięcia. Rozwinięcie przy krawędzi mieści panel na ekranie. Uchwyt **⋮** pozwala przenieść panel.
 Panel ukrywa się podczas przechwytywania. Usługę można zatrzymać również z powiadomienia.
 Panel nie uruchamia się samoczynnie po restarcie telefonu.
 
