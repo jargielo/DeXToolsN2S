@@ -5,6 +5,10 @@ Polski interfejs AMOLED, zmienny rozmiar okna, sterowanie dotykiem, myszą i kla
 Minimalny Android 11 (API 30), compile/target SDK 36. Docelowy sprzęt użytkownika:
 Samsung Galaxy S24 Ultra w DeX, Android 17 / One UI 9 — wymaga testów na fizycznym urządzeniu.
 
+**[Pobierz zbudowany APK](downloads/DeX-Tools-n2s-debug.apk)** · [SHA-256](downloads/DeX-Tools-n2s-debug.apk.sha256) · [Workflow](../../actions/workflows/android.yml)
+
+APK w `downloads` jest zweryfikowanym buildem z tej sesji. Artefakty Actions pochodzą z oddzielnych buildów runnera.
+
 ## Instalacja i użycie
 
 1. Pobierz `app-debug.apk` z artefaktu workflow **Android APK** (zakładka Actions) lub z Releases, jeśli opublikowano wydanie.
