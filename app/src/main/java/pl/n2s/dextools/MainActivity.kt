@@ -53,7 +53,7 @@ class MainActivity : Activity() {
             },
             "Wyłącz pływający panel" to { stopService(Intent(this, OverlayService::class.java)) }
         ))
-        content.addView(Ui.text(this, "Prywatność: bez sieci, analityki i historii tekstu. Hasła pomijamy. Zrzuty mogą zawierać dane widoczne na ekranie. FLAG_SECURE, treści DRM i ograniczenia systemowe mogą uniemożliwić przechwytywanie. Autor: n2s • 0.1.0", 13f, true))
+        content.addView(Ui.text(this, "Prywatność: bez sieci, analityki i historii tekstu. Hasła pomijamy. Zrzuty mogą zawierać dane widoczne na ekranie. FLAG_SECURE, treści DRM i ograniczenia systemowe mogą uniemożliwić przechwytywanie. Autor: n2s • 0.1.1", 13f, true))
         Ui.mount(this, ScrollView(this).apply { isFillViewport = true; addView(content) })
     }
     private fun overlaySettings() {

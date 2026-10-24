@@ -36,21 +36,30 @@ class CaptureService : Service() {
             region = intent.getBooleanExtra("region",false)
             @Suppress("DEPRECATION")
             val data = intent.getParcelableExtra<Intent>("data") ?: error("Brak zgody MediaProjection")
-            projection = getSystemService(MediaProjectionManager::class.java).getMediaProjection(intent.getIntExtra("resultCode",0),data)
-            projection!!.registerCallback(object: MediaProjection.Callback() {
-                override fun onStop() { if (!stopping && !completed.get()) fail("Przechwytywanie zakończone przez system") }
-                override fun onCapturedContentResize(width: Int, height: Int) {
-                    if (!completed.get() && width > 0 && height > 0 && (width != frameWidth || height != frameHeight)) configureReader(width,height)
-                }
-            },worker)
-            val bounds = getSystemService(WindowManager::class.java).maximumWindowMetrics.bounds
-            configureReader(bounds.width(),bounds.height())
-            display = projection!!.createVirtualDisplay("DeX screenshot",frameWidth,frameHeight,resources.displayMetrics.densityDpi,
-                DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,reader!!.surface,null,worker)
-            worker.postDelayed({ finishFrame() },650)
-            worker.postDelayed({ if (!completed.get()) fail("Brak obrazu. Sprawdź zgodę i ograniczenia aplikacji źródłowej.") },8000)
+            val resultCode=intent.getIntExtra("resultCode",0)
+            // Serialize initialization and resize callbacks on the same thread. A resize
+            // must never replace the reader before the first display has been assigned.
+            worker.post {
+                try { initializeProjection(resultCode,data) }
+                catch (e: Exception) { fail("Nie udało się przechwycić ekranu: ${e.message}") }
+            }
         } catch (e: Exception) { fail("Nie udało się przechwycić ekranu: ${e.message}") }
         return START_NOT_STICKY
+    }
+    private fun initializeProjection(resultCode: Int, data: Intent) {
+        projection = getSystemService(MediaProjectionManager::class.java).getMediaProjection(resultCode,data)
+        projection!!.registerCallback(object: MediaProjection.Callback() {
+            override fun onStop() { if (!stopping && !completed.get()) fail("Przechwytywanie zakończone przez system") }
+            override fun onCapturedContentResize(width: Int, height: Int) {
+                if (!completed.get() && width > 0 && height > 0 && (width != frameWidth || height != frameHeight)) configureReader(width,height)
+            }
+        },worker)
+        val bounds = getSystemService(WindowManager::class.java).maximumWindowMetrics.bounds
+        configureReader(bounds.width(),bounds.height())
+        display = projection!!.createVirtualDisplay("DeX screenshot",frameWidth,frameHeight,resources.displayMetrics.densityDpi,
+            DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,reader!!.surface,null,worker)
+        worker.postDelayed({ finishFrame() },650)
+        worker.postDelayed({ if (!completed.get()) fail("Brak obrazu. Sprawdź zgodę i ograniczenia aplikacji źródłowej.") },8000)
     }
     private fun configureReader(width: Int, height: Int) {
         reader?.close(); latest?.recycle(); latest=null
