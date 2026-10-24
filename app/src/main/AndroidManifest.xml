@@ -15,7 +15,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CapturePermissionActivity" android:exported="false" android:excludeFromRecents="true" android:theme="@style/PermissionTheme" />
+        <activity android:name=".CapturePermissionActivity" android:taskAffinity="" android:exported="false" android:excludeFromRecents="true" android:theme="@style/PermissionTheme" />
         <activity android:name=".TextSelectionActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
