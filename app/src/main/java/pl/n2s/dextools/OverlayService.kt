@@ -32,12 +32,12 @@ class OverlayService : Service() {
             gravity=Gravity.TOP or Gravity.START; x=Ui.dp(this@OverlayService,20); y=Ui.dp(this@OverlayService,100)
         }
         val row=LinearLayout(this).apply {
-            orientation=LinearLayout.HORIZONTAL; background=Ui.background()
+            orientation=LinearLayout.VERTICAL; background=Ui.background()
             setPadding(Ui.dp(context,6),Ui.dp(context,6),Ui.dp(context,6),Ui.dp(context,6))
             elevation=Ui.dp(context,8).toFloat()
         }
         val handle=Ui.text(this,"⋮",24f).apply {
-            contentDescription="Przeciągnij panel"; setPadding(Ui.dp(context,12),0,Ui.dp(context,12),0)
+            contentDescription="Przeciągnij panel"; gravity=Gravity.CENTER; setPadding(0,0,0,0)
         }
         var startX=0; var startY=0; var rawX=0f; var rawY=0f
         handle.setOnTouchListener { _,event ->
@@ -52,12 +52,13 @@ class OverlayService : Service() {
                 MotionEvent.ACTION_UP -> handle.performClick()
             }; true
         }
-        row.addView(handle)
+        row.addView(handle,LinearLayout.LayoutParams(Ui.dp(this,44),Ui.dp(this,28)))
         fun button(label: String, description: String, action: () -> Unit): Button {
             return Ui.button(this,label,action).apply {
                 contentDescription=description
-                minWidth=Ui.dp(context,48)
-                row.addView(this,LinearLayout.LayoutParams(-2,Ui.dp(context,48)).apply { marginStart=Ui.dp(context,4) })
+                minWidth=0; minimumWidth=0; minHeight=0; minimumHeight=0
+                setPadding(0,0,0,0); textSize=18f
+                row.addView(this,LinearLayout.LayoutParams(Ui.dp(context,44),Ui.dp(context,44)).apply { topMargin=Ui.dp(context,4) })
             }
         }
         button("▣","Zrzut całego ekranu") { capture(false) }

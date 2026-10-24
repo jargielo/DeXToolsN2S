@@ -9,14 +9,14 @@
         android:icon="@drawable/ic_app" android:allowBackup="false" android:supportsRtl="true"
         android:resizeableActivity="true">
         <meta-data android:name="com.samsung.android.dex.application.title" android:value="DeX Tools n2s" />
-        <activity android:name=".MainActivity" android:exported="true">
+        <activity android:name=".MainActivity" android:exported="true" android:theme="@style/PopupTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".CapturePermissionActivity" android:taskAffinity="" android:exported="false" android:excludeFromRecents="true" android:theme="@style/PermissionTheme" />
-        <activity android:name=".TextSelectionActivity" android:exported="true">
+        <activity android:name=".TextSelectionActivity" android:exported="true" android:taskAffinity="" android:theme="@style/PopupTheme">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />

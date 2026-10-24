@@ -17,6 +17,7 @@ class CapturePermissionActivity : Activity() {
         if (intent.getBooleanExtra("region", false) && !Settings.canDrawOverlays(this)) {
             Ui.toast(this, "Zaznaczanie fragmentu wymaga zgody na nakładkę"); finish(); return
         }
+        MainActivity.dismissForCapture()
         OverlayService.instance?.hide()
         if (savedInstanceState == null) {
             val manager = getSystemService(MediaProjectionManager::class.java)

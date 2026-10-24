@@ -36,10 +36,16 @@ object Ui {
     }
     fun space(c: Context) = Space(c).apply { layoutParams = LinearLayout.LayoutParams(1, dp(c, 12)) }
     fun mount(a: Activity, content: View) {
+        val attributes = a.theme.obtainStyledAttributes(intArrayOf(android.R.attr.windowIsFloating))
+        val floating = attributes.getBoolean(0,false)
+        attributes.recycle()
         val root = FrameLayout(a).apply {
-            setBackgroundColor(Color.BLACK)
+            if (floating) {
+                background=background(Color.BLACK,dp(a,16).toFloat()).apply { setStroke(dp(a,1),Color.rgb(48,52,55)) }
+                clipToOutline=true
+            } else setBackgroundColor(Color.BLACK)
             addView(content, FrameLayout.LayoutParams(-1, -1))
-            setOnApplyWindowInsetsListener { v, insets ->
+            if (!floating) setOnApplyWindowInsetsListener { v, insets ->
                 val bars = insets.getInsets(WindowInsets.Type.systemBars() or WindowInsets.Type.displayCutout())
                 v.setPadding(bars.left, bars.top, bars.right, bars.bottom)
                 insets
